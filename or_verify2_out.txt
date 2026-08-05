@@ -1,0 +1,88 @@
+ROUND 2: 49 deep routes + 4 spaced re-tests
+
+[  1/49] TOOL  39.8s  nvidia/nvidia/nemotron-3-ultra-550b-a55b
+[  2/49] TOOL   3.3s  mistral/mistral-large-latest
+[  3/49] TOOL   4.2s  nvidia/nvidia/nemotron-3-super-120b-a12b
+[  4/49] TOOL   5.3s  mistral/mistral-medium-latest
+[  5/49] TOOL   3.9s  nvidia/nvidia/nemotron-3-nano-30b-a3b
+[  6/49] TOOL   2.9s  mistral/mistral-medium-3.5
+[  7/49] FAIL   2.7s  nvidia/nvidia/nemotron-nano-3-30b-a3b   :: 404 {"error":{"message":"[nvidia/nvidia/nemotron-nano-3-30b-a3b] [404]: Model not found (reset after 2m)"}}
+[  8/49] TOOL   2.9s  mistral/mistral-small-2603
+[  9/49] TOOL   4.7s  nvidia/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning
+[ 10/49] TOOL   4.0s  mistral/devstral-latest
+[ 11/49] TOOL   3.1s  nvidia/nvidia/llama-3.3-nemotron-super-49b-v1
+[ 12/49] TOOL   9.4s  mistral/devstral-2512
+[ 13/49] FAIL   2.5s  nvidia/nvidia/llama-3.1-nemotron-70b-instruct   :: 404 {"error":{"message":"[nvidia/nvidia/llama-3.1-nemotron-70b-instruct] [404]: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '9b96341b-9791-4db9-a0
+[ 14/49] TOOL   4.5s  mistral/codestral-2508
+[ 15/49] FAIL   2.4s  nvidia/nvidia/llama-3.1-nemotron-ultra-253b-v1   :: 404 {"error":{"message":"[nvidia/nvidia/llama-3.1-nemotron-ultra-253b-v1] [404]: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '84bf12ff-edbd-4435-b
+[ 16/49] TOOL   3.0s  mistral/ministral-3b-latest
+[ 17/49] FAIL   2.5s  nvidia/nvidia/llama-3.1-nemotron-51b-instruct   :: 404 {"error":{"message":"[nvidia/nvidia/llama-3.1-nemotron-51b-instruct] [404]: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '5beba52c-65a9-4f46-8c
+[ 18/49] TOOL   2.8s  mistral/ministral-14b-latest
+[ 19/49] TOOL   8.1s  nvidia/nvidia/nvidia-nemotron-nano-9b-v2
+[ 20/49] TOOL   2.7s  mistral/mistral-code-latest
+[ 21/49] FAIL  62.1s  nvidia/nvidia/llama-3.1-nemotron-nano-8b-v1   :: ERR timed out
+[ 22/49] TOOL   3.8s  mistral/mistral-code-agent-latest
+[ 23/49] TOOL  11.9s  nvidia/nvidia/nemotron-mini-4b-instruct
+[ 24/49] TOOL   2.8s  mistral/mistral-vibe-cli-with-tools
+[ 25/49] FAIL   2.7s  nvidia/nvidia/nemotron-4-340b-instruct   :: 404 {"error":{"message":"[nvidia/nvidia/nemotron-4-340b-instruct] [404]: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'b0fcd392-e905-4ab4-8eb9-aeae
+[ 26/49] TOOL   3.0s  mistral/mistral-vibe-cli-fast
+[ 27/49] FAIL  62.0s  nvidia/openai/gpt-oss-120b   :: ERR timed out
+[ 28/49] FAIL  27.9s  mistral/labs-leanstral-1-5-1   :: 403 {"error":{"message":"[mistral/labs-leanstral-1-5-1] [403]: Model labs-leanstral-1-5-1 is a Labs model. To use Labs models, an admin must enable them in your org
+[ 29/49] TOOL   7.9s  nvidia/openai/gpt-oss-20b
+[ 30/49] TOOL   3.7s  mistral/mistral-large-2512
+[ 31/49] TOOL  50.9s  nvidia/deepseek-ai/deepseek-v4-pro
+[ 32/49] TOOL   5.1s  nvidia/meta/llama-3.1-70b-instruct
+[ 33/49] TOOL   2.9s  nvidia/meta/llama-3.1-8b-instruct
+[ 34/49] FAIL  62.1s  nvidia/meta/llama-3.2-3b-instruct   :: ERR timed out
+[ 35/49] TOOL  37.6s  nvidia/z-ai/glm-5.2
+[ 36/49] FAIL  62.0s  nvidia/minimaxai/minimax-m3   :: ERR timed out
+[ 37/49] FAIL   2.5s  nvidia/moonshotai/kimi-k2.6   :: 404 {"error":{"message":"[nvidia/moonshotai/kimi-k2.6] [404]: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '23d4f03a-b8a6-4adb-a183-7daa083a09cc': 
+[ 38/49] TOOL   7.8s  nvidia/stepfun-ai/step-3.7-flash
+[ 39/49] TOOL   4.1s  nvidia/thinkingmachines/inkling
+[ 40/49] FAIL  25.8s  nvidia/poolside/laguna-xs-2.1   :: 503 {"error":{"message":"[nvidia/poolside/laguna-xs-2.1] [503]: ResourceExhausted: Worker local total request limit reached (61/32) (reset after 24s)"}}
+[ 41/49] FAIL  62.0s  nvidia/mistralai/mistral-medium-3.5-128b   :: ERR timed out
+[ 42/49] TOOL   2.9s  nvidia/mistralai/mistral-nemotron
+[ 43/49] FAIL   2.5s  nvidia/mistralai/mistral-large-2-instruct   :: 404 {"error":{"message":"[nvidia/mistralai/mistral-large-2-instruct] [404]: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '7fadd4de-e22a-48e4-90e9-f
+[ 44/49] FAIL  13.7s  nvidia/qwen/qwen3-next-80b-a3b-instruct   :: 410 {"error":{"message":"[nvidia/qwen/qwen3-next-80b-a3b-instruct] [410]: {\"type\":\"about:blank\",\"title\":\"Gone\",\"status\":410,\"detail\":\"The model 'qwen/q
+[ 45/49] FAIL   2.5s  nvidia/microsoft/phi-3.5-moe-instruct   :: 404 {"error":{"message":"[nvidia/microsoft/phi-3.5-moe-instruct] [404]: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function 'e6cab982-62f4-481e-9a7a-3dedb
+[ 46/49] FAIL   2.8s  nvidia/ai21labs/jamba-1.5-large-instruct   :: 404 {"error":{"message":"[nvidia/ai21labs/jamba-1.5-large-instruct] [404]: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '6497fc2b-7ff8-4019-8946-12
+[ 47/49] FAIL   2.5s  nvidia/writer/palmyra-creative-122b   :: 404 {"error":{"message":"[nvidia/writer/palmyra-creative-122b] [404]: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '00bdd0a7-e38f-4423-9007-c4d8730
+[ 48/49] FAIL   2.4s  nvidia/databricks/dbrx-instruct   :: 404 {"error":{"message":"[nvidia/databricks/dbrx-instruct] [404]: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '3d6c2ff8-8bfc-4d10-8fd0-b7337288e86
+[ 49/49] FAIL   2.4s  nvidia/01-ai/yi-large   :: 404 {"error":{"message":"[nvidia/01-ai/yi-large] [404]: {\"status\":404,\"title\":\"Not Found\",\"detail\":\"Function '23bd454d-b225-49a3-8118-582a62fc51b8': Not fo
+
+--- spaced re-test of 403/VPN-suspect routes (25s apart) ---
+  FAIL   2.5s  groq/llama-3.3-70b-versatile   :: 403 {"error":{"message":"[403]: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/\",\"title
+  FAIL   2.4s  cerebras/gpt-oss-120b   :: 403 {"error":{"message":"[403]: {\"type\":\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/\",\"title
+  FAIL   2.4s  opencode/big-pickle   :: 403 {"error":{"message":"[403]: <!doctype html>","type":"permission_error","code":"insufficient_quota"}}
+  FAIL   2.4s  opencode/nemotron-3-ultra-free   :: 403 {"error":{"message":"[403]: <!doctype html>","type":"permission_error","code":"insufficient_quota"}}
+
+=== ROUND2 TOOL-CAPABLE: 29 ===
+  nvidia/nvidia/nemotron-3-ultra-550b-a55b
+  mistral/mistral-large-latest
+  nvidia/nvidia/nemotron-3-super-120b-a12b
+  mistral/mistral-medium-latest
+  nvidia/nvidia/nemotron-3-nano-30b-a3b
+  mistral/mistral-medium-3.5
+  mistral/mistral-small-2603
+  nvidia/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning
+  mistral/devstral-latest
+  nvidia/nvidia/llama-3.3-nemotron-super-49b-v1
+  mistral/devstral-2512
+  mistral/codestral-2508
+  mistral/ministral-3b-latest
+  mistral/ministral-14b-latest
+  nvidia/nvidia/nvidia-nemotron-nano-9b-v2
+  mistral/mistral-code-latest
+  mistral/mistral-code-agent-latest
+  nvidia/nvidia/nemotron-mini-4b-instruct
+  mistral/mistral-vibe-cli-with-tools
+  mistral/mistral-vibe-cli-fast
+  nvidia/openai/gpt-oss-20b
+  mistral/mistral-large-2512
+  nvidia/deepseek-ai/deepseek-v4-pro
+  nvidia/meta/llama-3.1-70b-instruct
+  nvidia/meta/llama-3.1-8b-instruct
+  nvidia/z-ai/glm-5.2
+  nvidia/stepfun-ai/step-3.7-flash
+  nvidia/thinkingmachines/inkling
+  nvidia/mistralai/mistral-nemotron

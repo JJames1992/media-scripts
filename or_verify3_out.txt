@@ -1,0 +1,20 @@
+ROUND 3: 15 OpenRouter free routes (poisoned key removed)
+
+[ 1/15] TOOL  22.9s  openrouter/nvidia/nemotron-3-ultra-550b-a55b:free
+[ 2/15] FAIL   2.5s  openrouter/nvidia/nemotron-3-super-120b-a12b:free   :: 404 {"error":{"message":"[openrouter/nvidia/nemotron-3-super-120b-a12b:free] [404]: No endpoints available matching your guardrail restrictions and data p
+[ 3/15] FAIL   2.0s  openrouter/nvidia/nemotron-3-nano-30b-a3b:free   :: 404 {"error":{"message":"[openrouter/nvidia/nemotron-3-nano-30b-a3b:free] [404]: No endpoints available matching your guardrail restrictions and data poli
+[ 4/15] FAIL   2.0s  openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free   :: 404 {"error":{"message":"[openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free] [404]: No endpoints available matching your guardrail restriction
+[ 5/15] FAIL   2.1s  openrouter/nvidia/nemotron-nano-9b-v2:free   :: 404 {"error":{"message":"[openrouter/nvidia/nemotron-nano-9b-v2:free] [404]: No endpoints available matching your guardrail restrictions and data policy. 
+[ 6/15] FAIL   2.0s  openrouter/nvidia/nemotron-nano-12b-v2-vl:free   :: 404 {"error":{"message":"[openrouter/nvidia/nemotron-nano-12b-v2-vl:free] [404]: No endpoints available matching your guardrail restrictions and data poli
+[ 7/15] FAIL   2.1s  openrouter/inclusionai/ling-3.0-flash:free   :: 404 {"error":{"message":"[openrouter/inclusionai/ling-3.0-flash:free] [404]: No endpoints available matching your guardrail restrictions and data policy. 
+[ 8/15] FAIL   2.4s  openrouter/poolside/laguna-s-2.1:free   :: 404 {"error":{"message":"[openrouter/poolside/laguna-s-2.1:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Confi
+[ 9/15] FAIL   2.1s  openrouter/poolside/laguna-xs-2.1:free   :: 404 {"error":{"message":"[openrouter/poolside/laguna-xs-2.1:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Conf
+[10/15] FAIL   2.1s  openrouter/cohere/north-mini-code:free   :: 404 {"error":{"message":"[openrouter/cohere/north-mini-code:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Conf
+[11/15] FAIL  31.7s  openrouter/google/gemma-4-31b-it:free   :: 404 {"error":{"message":"[openrouter/google/gemma-4-31b-it:free] [404]: No allowed providers are available for the selected model. (reset after 2m)"}}
+[12/15] FAIL   2.2s  openrouter/google/gemma-4-26b-a4b-it:free   :: 404 {"error":{"message":"[openrouter/google/gemma-4-26b-a4b-it:free] [404]: No allowed providers are available for the selected model. (reset after 1m 50s
+[13/15] FAIL   2.1s  openrouter/openai/gpt-oss-20b:free   :: 404 {"error":{"message":"[openrouter/openai/gpt-oss-20b:free] [404]: No allowed providers are available for the selected model. (reset after 1m 40s)"}}
+[14/15] FAIL   2.1s  openrouter/openrouter/free   :: 404 {"error":{"message":"[openrouter/openrouter/free] [404]: No allowed providers are available for the selected model. (reset after 1m 30s)"}}
+[15/15] FAIL   2.1s  openrouter/stepfun/step-3.7-flash:free   :: 404 {"error":{"message":"[openrouter/stepfun/step-3.7-flash:free] [404]: No allowed providers are available for the selected model. (reset after 1m 20s)"}
+
+=== ROUND3 TOOL-CAPABLE: 1 ===
+  openrouter/nvidia/nemotron-3-ultra-550b-a55b:free

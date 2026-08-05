@@ -1,0 +1,1 @@
+{"error":{"message":"Invalid request","details":[{"field":"cloudUrl","message":"Invalid input: expected string, received null"},{"field":"autoRoutingDefaultVariant","message":"Invalid option: expected one of \"lkgp\"|\"coding\"|\"fast\"|\"cheap\"|\"offline\"|\"smart\""}]}}

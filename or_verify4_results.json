@@ -1,0 +1,278 @@
+{
+ "groq/llama-3.3-70b-versatile": {
+  "ok": true,
+  "tool": true,
+  "secs": 2.8,
+  "err": null
+ },
+ "cerebras/gpt-oss-120b": {
+  "ok": true,
+  "tool": true,
+  "secs": 2.6,
+  "err": null
+ },
+ "opencode/big-pickle": {
+  "ok": true,
+  "tool": true,
+  "secs": 3.8,
+  "err": null
+ },
+ "pollinations/openai-fast": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.8,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "gitlawb/mimo-v2.5-pro": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.9,
+  "err": "404 {\"error\":{\"message\":\"[gitlawb/mimo-v2.5-pro] [404]: Not found. Use POST /v1/chat/completions. (reset after 2m)\"}}"
+ },
+ "gitlawb-gmi/openai/gpt-4o-mini": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.0,
+  "err": "404 {\"error\":{\"message\":\"[gitlawb-gmi/openai/gpt-4o-mini] [404]: Not found. Use POST /v1/chat/completions. (reset after 2m)\"}}"
+ },
+ "hackclub/meta-llama/llama-3.3-70b-instruct": {
+  "ok": false,
+  "tool": false,
+  "secs": 6.4,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required\",\"type\":\"authentication_error\",\"code\":\"invalid_api_key\"}}"
+ },
+ "groq/llama-3.1-8b-instant": {
+  "ok": true,
+  "tool": true,
+  "secs": 8.9,
+  "err": null
+ },
+ "cerebras/gemma-4-31b": {
+  "ok": true,
+  "tool": true,
+  "secs": 2.7,
+  "err": null
+ },
+ "opencode/nemotron-3-ultra-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.9,
+  "err": "502 {\"error\":{\"message\":\"[opencode-zen/nemotron-3-ultra-free] upstream returned an empty response without usable output\",\"type\":\"upstr"
+ },
+ "pollinations/openai": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.6,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "gitlawb/mimo-v2.5": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "err": "404 {\"error\":{\"message\":\"[gitlawb/mimo-v2.5] [404]: Not found. Use POST /v1/chat/completions. (reset after 1m 6s)\"}}"
+ },
+ "gitlawb-gmi/deepseek-ai/DeepSeek-V4-Flash": {
+  "ok": false,
+  "tool": false,
+  "secs": 3.7,
+  "err": "404 {\"error\":{\"message\":\"[gitlawb-gmi/deepseek-ai/DeepSeek-V4-Flash] [404]: Not found. Use POST /v1/chat/completions. (reset after 2m)"
+ },
+ "hackclub/mistralai/mistral-7b-instruct": {
+  "ok": false,
+  "tool": false,
+  "secs": 4.6,
+  "err": "404 {\"error\":{\"message\":\"No active credentials for provider: hackclub\",\"type\":\"invalid_request_error\",\"code\":\"model_not_found\"}}"
+ },
+ "groq/openai/gpt-oss-120b": {
+  "ok": true,
+  "tool": true,
+  "secs": 2.7,
+  "err": null
+ },
+ "cerebras/zai-glm-4.7": {
+  "ok": true,
+  "tool": true,
+  "secs": 2.8,
+  "err": null
+ },
+ "opencode/north-mini-code-free": {
+  "ok": true,
+  "tool": true,
+  "secs": 6.0,
+  "err": null
+ },
+ "pollinations/openai-large": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.6,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "gitlawb/mimo-v2-flash": {
+  "ok": false,
+  "tool": false,
+  "secs": 22.8,
+  "err": "404 {\"error\":{\"message\":\"[gitlawb/mimo-v2-flash] [404]: Not found. Use POST /v1/chat/completions. (reset after 2m)\"}}"
+ },
+ "gitlawb-gmi/XiaomiMiMo/MiMo-V2.5": {
+  "ok": false,
+  "tool": false,
+  "secs": 3.4,
+  "err": "404 {\"error\":{\"message\":\"[gitlawb-gmi/XiaomiMiMo/MiMo-V2.5] [404]: Not found. Use POST /v1/chat/completions. (reset after 2m)\"}}"
+ },
+ "groq/openai/gpt-oss-20b": {
+  "ok": true,
+  "tool": true,
+  "secs": 2.6,
+  "err": null
+ },
+ "opencode/deepseek-v4-flash-free": {
+  "ok": true,
+  "tool": true,
+  "secs": 10.3,
+  "err": null
+ },
+ "pollinations/qwen-coder": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.7,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "groq/qwen/qwen3.6-27b": {
+  "ok": true,
+  "tool": true,
+  "secs": 2.7,
+  "err": null
+ },
+ "opencode/minimax-m3-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.5,
+  "err": "401 {\"error\":{\"message\":\"[401]: Model minimax-m3-free is not supported\",\"type\":\"authentication_error\",\"code\":\"invalid_api_key\"}}"
+ },
+ "pollinations/mistral": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.8,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "groq/groq/compound": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.4,
+  "err": "400 {\"error\":{\"message\":\"[400]: `tool calling` is not supported with this model\",\"type\":\"invalid_request_error\",\"code\":\"bad_request\"},"
+ },
+ "opencode/minimax-m2.5-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.8,
+  "err": "401 {\"error\":{\"message\":\"[401]: Model minimax-m2.5-free is not supported\",\"type\":\"authentication_error\",\"code\":\"invalid_api_key\"}}"
+ },
+ "pollinations/gemini": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.6,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "groq/groq/compound-mini": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.5,
+  "err": "400 {\"error\":{\"message\":\"[400]: `tool calling` is not supported with this model\",\"type\":\"invalid_request_error\",\"code\":\"bad_request\"},"
+ },
+ "opencode/ling-2.6-1t-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 6.1,
+  "err": "401 {\"error\":{\"message\":\"[401]: Model ling-2.6-1t-free is not supported\",\"type\":\"authentication_error\",\"code\":\"invalid_api_key\"}}"
+ },
+ "pollinations/gemini-fast": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.7,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "groq/allam-2-7b": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.8,
+  "err": "400 {\"error\":{\"message\":\"[400]: `tool calling` is not supported with this model\",\"type\":\"invalid_request_error\",\"code\":\"bad_request\"},"
+ },
+ "opencode/trinity-large-preview-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.5,
+  "err": "401 {\"error\":{\"message\":\"[401]: Model trinity-large-preview-free is not supported\",\"type\":\"authentication_error\",\"code\":\"invalid_api_k"
+ },
+ "pollinations/deepseek": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.6,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "opencode/nemotron-3-super-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.7,
+  "err": "401 {\"error\":{\"message\":\"[401]: Model nemotron-3-super-free is not supported\",\"type\":\"authentication_error\",\"code\":\"invalid_api_key\"}}"
+ },
+ "pollinations/glm": {
+  "ok": false,
+  "tool": false,
+  "secs": 3.1,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "opencode/qwen3.6-plus-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.4,
+  "err": "401 {\"error\":{\"message\":\"[401]: Model qwen3.6-plus-free is not supported\",\"type\":\"authentication_error\",\"code\":\"invalid_api_key\"}}"
+ },
+ "pollinations/nova-fast": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.9,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "opencode/grok-code": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.4,
+  "err": "401 {\"error\":{\"message\":\"[401]: Model grok-code is not supported\",\"type\":\"authentication_error\",\"code\":\"invalid_api_key\"}}"
+ },
+ "pollinations/nova": {
+  "ok": false,
+  "tool": false,
+  "secs": 3.9,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "opencode/code-supernova": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.4,
+  "err": "401 {\"error\":{\"message\":\"[401]: Model code-supernova is not supported\",\"type\":\"authentication_error\",\"code\":\"invalid_api_key\"}}"
+ },
+ "pollinations/grok": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.6,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "pollinations/claude-fast": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.5,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "pollinations/kimi": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.7,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ },
+ "pollinations/minimax": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.9,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?ke"
+ }
+}

@@ -1,0 +1,92 @@
+{
+ "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free": {
+  "ok": true,
+  "tool": true,
+  "secs": 22.9,
+  "err": null
+ },
+ "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.5,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/nvidia/nemotron-3-super-120b-a12b:free] [404]: No endpoints available matching your guardrail restrictions and data p"
+ },
+ "openrouter/nvidia/nemotron-3-nano-30b-a3b:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.0,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/nvidia/nemotron-3-nano-30b-a3b:free] [404]: No endpoints available matching your guardrail restrictions and data poli"
+ },
+ "openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.0,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free] [404]: No endpoints available matching your guardrail restriction"
+ },
+ "openrouter/nvidia/nemotron-nano-9b-v2:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/nvidia/nemotron-nano-9b-v2:free] [404]: No endpoints available matching your guardrail restrictions and data policy. "
+ },
+ "openrouter/nvidia/nemotron-nano-12b-v2-vl:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.0,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/nvidia/nemotron-nano-12b-v2-vl:free] [404]: No endpoints available matching your guardrail restrictions and data poli"
+ },
+ "openrouter/inclusionai/ling-3.0-flash:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/inclusionai/ling-3.0-flash:free] [404]: No endpoints available matching your guardrail restrictions and data policy. "
+ },
+ "openrouter/poolside/laguna-s-2.1:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.4,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/poolside/laguna-s-2.1:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Confi"
+ },
+ "openrouter/poolside/laguna-xs-2.1:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/poolside/laguna-xs-2.1:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Conf"
+ },
+ "openrouter/cohere/north-mini-code:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/cohere/north-mini-code:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Conf"
+ },
+ "openrouter/google/gemma-4-31b-it:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 31.7,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/google/gemma-4-31b-it:free] [404]: No allowed providers are available for the selected model. (reset after 2m)\"}}"
+ },
+ "openrouter/google/gemma-4-26b-a4b-it:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.2,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/google/gemma-4-26b-a4b-it:free] [404]: No allowed providers are available for the selected model. (reset after 1m 50s"
+ },
+ "openrouter/openai/gpt-oss-20b:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/openai/gpt-oss-20b:free] [404]: No allowed providers are available for the selected model. (reset after 1m 40s)\"}}"
+ },
+ "openrouter/openrouter/free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/openrouter/free] [404]: No allowed providers are available for the selected model. (reset after 1m 30s)\"}}"
+ },
+ "openrouter/stepfun/step-3.7-flash:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/stepfun/step-3.7-flash:free] [404]: No allowed providers are available for the selected model. (reset after 1m 20s)\"}"
+ }
+}

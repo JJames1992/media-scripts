@@ -1,0 +1,89 @@
+# ── Windows user-profile system files ─────────────────────────────
+NTUSER.DAT*
+ntuser.dat*
+ntuser.ini
+desktop.ini
+Thumbs.db
+nul
+
+# ── Windows shell junctions / special dirs ────────────────────────
+AppData/
+Application Data/
+Local Settings/
+My Documents/
+My Music/
+My Pictures/
+My Videos/
+NetHood/
+Contacts/
+Cookies/
+Desktop/
+Documents/
+Downloads/
+Favorites/
+Links/
+Music/
+OneDrive/
+Pictures/
+PrintHood/
+Recent/
+Saved Games/
+Searches/
+SendTo/
+Start Menu/
+Templates/
+Videos/
+# phone backup
+CrossDevice/
+
+# ── Local data / big dirs ─────────────────────────────────────────
+~/
+.ollama/
+.conda/
+.pinokio/
+.docker/
+.matplotlib/
+.triton/
+.local/
+.items/
+# nested Hermes profile (auto/best-free) — .env + state — never track
+auto/
+
+# ── Agent / app config dirs (may hold secrets) ────────────────────
+.hermes/
+.claude/
+.openclaw/
+.rabbit-agent/
+.agents/
+.litellm/
+.cua-driver/
+.cua-driver-rs/
+.omniroute/
+.cache/
+.config/
+.cinemagoer/
+.aria2/
+
+# ── Secrets ───────────────────────────────────────────────────────
+.env
+*.env
+auth.json
+.ssh/
+.gnupg/
+.gitconfig
+twin_bridge.json
+
+# ── Runtime state / logs / temp ───────────────────────────────────
+.hermes_*
+.gapfill_check_state.json
+*.log
+tmp_*
+
+# ── Python ────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ── Misc ──────────────────────────────────────────────────────────
+node_modules/

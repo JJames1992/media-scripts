@@ -1,0 +1,520 @@
+{
+ "groq/llama-3.3-70b-versatile": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.6,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: {\\\"type\\\":\\\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/\\\",\\\"title\\\":\\\"Error 1010: Access denied\\\",\\\"statu"
+ },
+ "cerebras/gpt-oss-120b": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.5,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: {\\\"type\\\":\\\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/\\\",\\\"title\\\":\\\"Error 1010: Access denied\\\",\\\"statu"
+ },
+ "nvidia/deepseek-ai/deepseek-v4-flash": {
+  "ok": true,
+  "tool": true,
+  "secs": 15.8,
+  "resolved": "deepseek-ai/deepseek-v4-flash",
+  "err": null
+ },
+ "mistral/mistral-small-latest": {
+  "ok": true,
+  "tool": true,
+  "secs": 3.1,
+  "resolved": "mistral-small-latest",
+  "err": null
+ },
+ "openrouter/nvidia/nemotron-3-ultra-550b-a55b:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 3.4,
+  "resolved": null,
+  "err": "502 {\"error\":{\"message\":\"[openrouter/nvidia/nemotron-3-ultra-550b-a55b:free] upstream returned an empty response without usable output\",\"type\":\"upstream_response_error\",\"code\":\"upstream_empty_response\"}}"
+ },
+ "opencode/nemotron-3-ultra-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.5,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: <!doctype html>\",\"type\":\"permission_error\",\"code\":\"insufficient_quota\"}}"
+ },
+ "huggingchat/openai/gpt-oss-120b": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.1,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: HuggingChat requires a session cookie. Log in to huggingface.co/chat, open DevTools > Application > Cookies, and copy the hf-chat cookie value.\",\"type\":\"authentication_erro"
+ },
+ "hackclub/meta-llama/llama-3.3-70b-instruct": {
+  "ok": false,
+  "tool": false,
+  "secs": 6.0,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required\",\"type\":\"authentication_error\",\"code\":\"invalid_api_key\"}}"
+ },
+ "gitlawb/mimo-v2.5-pro": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.5,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[gitlawb/mimo-v2.5-pro] [404]: Not found. Use POST /v1/chat/completions. (reset after 2m)\"}}"
+ },
+ "gitlawb-gmi/openai/gpt-5.4-mini": {
+  "ok": false,
+  "tool": false,
+  "secs": 8.3,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[gitlawb-gmi/openai/gpt-5.4-mini] [404]: Not found. Use POST /v1/chat/completions. (reset after 2m)\"}}"
+ },
+ "auggie/haiku4.5": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.2,
+  "resolved": null,
+  "err": "502 {\"error\":{\"message\":\"[502]: Auggie CLI exited with code 1: 'auggie' is not recognized as an internal or external command,\\r\",\"type\":\"server_error\",\"code\":\"bad_gateway\"}}"
+ },
+ "pollinations/openai-fast": {
+  "ok": false,
+  "tool": false,
+  "secs": 12.6,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?key= query parameter.\",\"type\":\"authentication_error\",\"code\":\"invalid_api"
+ },
+ "groq/llama-3.1-8b-instant": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.4,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: {\\\"type\\\":\\\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/\\\",\\\"title\\\":\\\"Error 1010: Access denied\\\",\\\"statu"
+ },
+ "cerebras/gemma-4-31b": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.4,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: {\\\"type\\\":\\\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/\\\",\\\"title\\\":\\\"Error 1010: Access denied\\\",\\\"statu"
+ },
+ "nvidia/meta/llama-3.3-70b-instruct": {
+  "ok": false,
+  "tool": false,
+  "secs": 77.0,
+  "resolved": null,
+  "err": "ERR timed out"
+ },
+ "mistral/devstral-medium-latest": {
+  "ok": true,
+  "tool": true,
+  "secs": 2.8,
+  "resolved": "devstral-medium-latest",
+  "err": null
+ },
+ "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 3.2,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/nvidia/nemotron-3-super-120b-a12b:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Configure: https://openrouter.ai/settings/p"
+ },
+ "opencode/north-mini-code-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.5,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: <!doctype html>\",\"type\":\"permission_error\",\"code\":\"insufficient_quota\"}}"
+ },
+ "huggingchat/openai/gpt-oss-20b": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.1,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: HuggingChat requires a session cookie. Log in to huggingface.co/chat, open DevTools > Application > Cookies, and copy the hf-chat cookie value.\",\"type\":\"authentication_erro"
+ },
+ "hackclub/mistralai/mistral-7b-instruct": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.0,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"No active credentials for provider: hackclub\",\"type\":\"invalid_request_error\",\"code\":\"model_not_found\"}}"
+ },
+ "gitlawb/mimo-v2.5": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.4,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[gitlawb/mimo-v2.5] [404]: Not found. Use POST /v1/chat/completions. (reset after 2m)\"}}"
+ },
+ "gitlawb-gmi/deepseek-ai/DeepSeek-V4-Flash": {
+  "ok": false,
+  "tool": false,
+  "secs": 4.6,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[gitlawb-gmi/deepseek-ai/DeepSeek-V4-Flash] [404]: Not found. Use POST /v1/chat/completions. (reset after 2m)\"}}"
+ },
+ "auggie/gpt5.4-mini": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "resolved": null,
+  "err": "502 {\"error\":{\"message\":\"[502]: Auggie CLI exited with code 1: 'auggie' is not recognized as an internal or external command,\\r\",\"type\":\"server_error\",\"code\":\"bad_gateway\"}}"
+ },
+ "pollinations/openai": {
+  "ok": false,
+  "tool": false,
+  "secs": 6.2,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?key= query parameter.\",\"type\":\"authentication_error\",\"code\":\"invalid_api"
+ },
+ "groq/openai/gpt-oss-120b": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.6,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: {\\\"type\\\":\\\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/\\\",\\\"title\\\":\\\"Error 1010: Access denied\\\",\\\"statu"
+ },
+ "cerebras/zai-glm-4.7": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.4,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: {\\\"type\\\":\\\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/\\\",\\\"title\\\":\\\"Error 1010: Access denied\\\",\\\"statu"
+ },
+ "nvidia/google/gemma-4-31b-it": {
+  "ok": false,
+  "tool": false,
+  "secs": 77.0,
+  "resolved": null,
+  "err": "ERR timed out"
+ },
+ "mistral/codestral-latest": {
+  "ok": true,
+  "tool": true,
+  "secs": 3.1,
+  "resolved": "codestral-latest",
+  "err": null
+ },
+ "openrouter/nvidia/nemotron-3-nano-30b-a3b:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 3.1,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/nvidia/nemotron-3-nano-30b-a3b:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Configure: https://openrouter.ai/settings/priv"
+ },
+ "opencode/big-pickle": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.4,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: <!doctype html>\",\"type\":\"permission_error\",\"code\":\"insufficient_quota\"}}"
+ },
+ "huggingchat/Qwen/Qwen3.5-397B-A17B": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.5,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: HuggingChat requires a session cookie. Log in to huggingface.co/chat, open DevTools > Application > Cookies, and copy the hf-chat cookie value.\",\"type\":\"authentication_erro"
+ },
+ "hackclub/deepseek-ai/deepseek-coder-33b": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"No active credentials for provider: hackclub\",\"type\":\"invalid_request_error\",\"code\":\"model_not_found\"}}"
+ },
+ "gitlawb/mimo-v2-flash": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.5,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[gitlawb/mimo-v2-flash] [404]: Not found. Use POST /v1/chat/completions. (reset after 2m)\"}}"
+ },
+ "gitlawb-gmi/XiaomiMiMo/MiMo-V2.5": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.5,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[gitlawb-gmi/XiaomiMiMo/MiMo-V2.5] [404]: Not found. Use POST /v1/chat/completions. (reset after 2m)\"}}"
+ },
+ "auggie/sonnet4.6": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.2,
+  "resolved": null,
+  "err": "502 {\"error\":{\"message\":\"[502]: Auggie CLI exited with code 1: 'auggie' is not recognized as an internal or external command,\\r\",\"type\":\"server_error\",\"code\":\"bad_gateway\"}}"
+ },
+ "pollinations/qwen-coder": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.9,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?key= query parameter.\",\"type\":\"authentication_error\",\"code\":\"invalid_api"
+ },
+ "groq/openai/gpt-oss-20b": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.9,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: {\\\"type\\\":\\\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/\\\",\\\"title\\\":\\\"Error 1010: Access denied\\\",\\\"statu"
+ },
+ "nvidia/qwen/qwen3-coder-480b-a35b-instruct": {
+  "ok": false,
+  "tool": false,
+  "secs": 12.8,
+  "resolved": null,
+  "err": "410 {\"error\":{\"message\":\"[nvidia/qwen/qwen3-coder-480b-a35b-instruct] [410]: {\\\"type\\\":\\\"about:blank\\\",\\\"title\\\":\\\"Gone\\\",\\\"status\\\":410,\\\"detail\\\":\\\"The model 'qwen/qwen3-coder-480b-a35b-instruct' has re"
+ },
+ "mistral/ministral-8b-latest": {
+  "ok": true,
+  "tool": true,
+  "secs": 4.1,
+  "resolved": "ministral-8b-latest",
+  "err": null
+ },
+ "openrouter/inclusionai/ling-3.0-flash:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 33.2,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/inclusionai/ling-3.0-flash:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Configure: https://openrouter.ai/settings/privacy "
+ },
+ "opencode/deepseek-v4-flash-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.6,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: <!doctype html>\",\"type\":\"permission_error\",\"code\":\"insufficient_quota\"}}"
+ },
+ "huggingchat/Qwen/Qwen3.6-27B": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.1,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: HuggingChat requires a session cookie. Log in to huggingface.co/chat, open DevTools > Application > Cookies, and copy the hf-chat cookie value.\",\"type\":\"authentication_erro"
+ },
+ "gitlawb-gmi/openai/gpt-4o-mini": {
+  "ok": false,
+  "tool": false,
+  "secs": 8.0,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[gitlawb-gmi/openai/gpt-4o-mini] [404]: Not found. Use POST /v1/chat/completions. (reset after 2m)\"}}"
+ },
+ "auggie/glm-5.2": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "resolved": null,
+  "err": "502 {\"error\":{\"message\":\"[502]: Auggie CLI exited with code 1: 'auggie' is not recognized as an internal or external command,\\r\",\"type\":\"server_error\",\"code\":\"bad_gateway\"}}"
+ },
+ "pollinations/mistral": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.6,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?key= query parameter.\",\"type\":\"authentication_error\",\"code\":\"invalid_api"
+ },
+ "groq/qwen/qwen3.6-27b": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.4,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: {\\\"type\\\":\\\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/\\\",\\\"title\\\":\\\"Error 1010: Access denied\\\",\\\"statu"
+ },
+ "nvidia/nvidia/llama-3.3-nemotron-super-49b-v1.5": {
+  "ok": true,
+  "tool": true,
+  "secs": 7.1,
+  "resolved": "nvidia/llama-3.3-nemotron-super-49b-v1.5",
+  "err": null
+ },
+ "mistral/mistral-medium-2508": {
+  "ok": true,
+  "tool": true,
+  "secs": 3.1,
+  "resolved": "mistral-medium-2508",
+  "err": null
+ },
+ "openrouter/poolside/laguna-s-2.1:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.0,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/poolside/laguna-s-2.1:free] [404]: No allowed providers are available for the selected model. (reset after 52s)\"}}"
+ },
+ "opencode/minimax-m3-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 6.7,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: <!doctype html>\",\"type\":\"permission_error\",\"code\":\"insufficient_quota\"}}"
+ },
+ "huggingchat/deepseek-ai/DeepSeek-V4-Flash": {
+  "ok": false,
+  "tool": false,
+  "secs": 5.2,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: HuggingChat requires a session cookie. Log in to huggingface.co/chat, open DevTools > Application > Cookies, and copy the hf-chat cookie value.\",\"type\":\"authentication_erro"
+ },
+ "pollinations/gemini-fast": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.6,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?key= query parameter.\",\"type\":\"authentication_error\",\"code\":\"invalid_api"
+ },
+ "groq/groq/compound-mini": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.5,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: {\\\"type\\\":\\\"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/error-1010/\\\",\\\"title\\\":\\\"Error 1010: Access denied\\\",\\\"statu"
+ },
+ "nvidia/moonshotai/kimi-k2-instruct": {
+  "ok": false,
+  "tool": false,
+  "secs": 12.5,
+  "resolved": null,
+  "err": "410 {\"error\":{\"message\":\"[nvidia/moonshotai/kimi-k2-instruct] [410]: {\\\"type\\\":\\\"about:blank\\\",\\\"title\\\":\\\"Gone\\\",\\\"status\\\":410,\\\"detail\\\":\\\"The model 'moonshotai/kimi-k2-instruct' has reached its end of"
+ },
+ "mistral/magistral-small-latest": {
+  "ok": true,
+  "tool": true,
+  "secs": 3.4,
+  "resolved": "magistral-small-latest",
+  "err": null
+ },
+ "openrouter/poolside/laguna-xs-2.1:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 3.2,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/poolside/laguna-xs-2.1:free] [404]: No allowed providers are available for the selected model. (reset after 2m)\"}}"
+ },
+ "opencode/minimax-m2.5-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.6,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: <!doctype html>\",\"type\":\"permission_error\",\"code\":\"insufficient_quota\"}}"
+ },
+ "huggingchat/google/gemma-4-31B-it": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: HuggingChat requires a session cookie. Log in to huggingface.co/chat, open DevTools > Application > Cookies, and copy the hf-chat cookie value.\",\"type\":\"authentication_erro"
+ },
+ "pollinations/deepseek": {
+  "ok": false,
+  "tool": false,
+  "secs": 4.2,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?key= query parameter.\",\"type\":\"authentication_error\",\"code\":\"invalid_api"
+ },
+ "openrouter/cohere/north-mini-code:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/cohere/north-mini-code:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Configure: https (reset after 1m 37s)\"}}"
+ },
+ "opencode/ling-2.6-1t-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.4,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: <!doctype html>\",\"type\":\"permission_error\",\"code\":\"insufficient_quota\"}}"
+ },
+ "huggingchat/zai-org/GLM-5.2": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.3,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: HuggingChat requires a session cookie. Log in to huggingface.co/chat, open DevTools > Application > Cookies, and copy the hf-chat cookie value.\",\"type\":\"authentication_erro"
+ },
+ "pollinations/glm": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.8,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?key= query parameter.\",\"type\":\"authentication_error\",\"code\":\"invalid_api"
+ },
+ "openrouter/google/gemma-4-31b-it:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.3,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/google/gemma-4-31b-it:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Configure: https (reset after 1m 15s)\"}}"
+ },
+ "opencode/trinity-large-preview-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.4,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: <!doctype html>\",\"type\":\"permission_error\",\"code\":\"insufficient_quota\"}}"
+ },
+ "huggingchat/MiniMaxAI/MiniMax-M3": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: HuggingChat requires a session cookie. Log in to huggingface.co/chat, open DevTools > Application > Cookies, and copy the hf-chat cookie value.\",\"type\":\"authentication_erro"
+ },
+ "pollinations/nova-fast": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.9,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: Authentication required. Please provide an API key via Authorization header (Bearer [REDACTED]) or ?key= query parameter.\",\"type\":\"authentication_error\",\"code\":\"invalid_api"
+ },
+ "openrouter/google/gemma-4-26b-a4b-it:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/google/gemma-4-26b-a4b-it:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Configure: https (reset after 54s)\"}}"
+ },
+ "opencode/nemotron-3-super-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.5,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: <!doctype html>\",\"type\":\"permission_error\",\"code\":\"insufficient_quota\"}}"
+ },
+ "huggingchat/moonshotai/Kimi-K2.6": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: HuggingChat requires a session cookie. Log in to huggingface.co/chat, open DevTools > Application > Cookies, and copy the hf-chat cookie value.\",\"type\":\"authentication_erro"
+ },
+ "openrouter/openai/gpt-oss-20b:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/openai/gpt-oss-20b:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Configure: https (reset after 38s)\"}}"
+ },
+ "opencode/qwen3.6-plus-free": {
+  "ok": false,
+  "tool": false,
+  "secs": 3.1,
+  "resolved": null,
+  "err": "403 {\"error\":{\"message\":\"[403]: <!doctype html>\",\"type\":\"permission_error\",\"code\":\"insufficient_quota\"}}"
+ },
+ "huggingchat/nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B-NVFP4": {
+  "ok": false,
+  "tool": false,
+  "secs": 2.1,
+  "resolved": null,
+  "err": "401 {\"error\":{\"message\":\"[401]: HuggingChat requires a session cookie. Log in to huggingface.co/chat, open DevTools > Application > Cookies, and copy the hf-chat cookie value.\",\"type\":\"authentication_erro"
+ },
+ "openrouter/nvidia/nemotron-nano-9b-v2:free": {
+  "ok": false,
+  "tool": false,
+  "secs": 24.3,
+  "resolved": null,
+  "err": "404 {\"error\":{\"message\":\"[openrouter/nvidia/nemotron-nano-9b-v2:free] [404]: No endpoints available matching your guardrail restrictions and data policy. Configure: https://openrouter.ai/settings/privacy "
+ }
+}
