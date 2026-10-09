@@ -1,54 +1,40 @@
 #!/usr/bin/env python3
 """subtitle_pipeline.py — English + Spanish subtitles for J:/Media-Archive.
 
-Inventory shows the library is nearly bare: ~1574 videos, ~66 with an
-English-ish external sub, ~36 with Spanish (mostly overlapping), and
-almost nothing with BOTH. Subtitle providers are geo-blocked from this
-host's US IP and from the VPN (Argentina) too — every free provider
-fails DNS or 403 from both netns. This script documents that and
-implements the full pipeline so it drops in when a provider works.
+OpenSubtitles.com via apikey (no username/password login flow).
+Frame-sync: every cue snapped to the video frame grid; verified
+against video duration (half-frame tolerance).
 
 Usage:
-    python subtitle_pipeline.py inventory            # scan tree, print stats
-    python subtitle_pipeline.py download --pilot PATH  # one-file dry test
+    python subtitle_pipeline.py inventory [--save PATH]
+    python subtitle_pipeline.py download --pilot PATH
+    python subtitle_pipeline.py download --all
 
-Frame-sync guarantee (download path):
-    * every subtitle is converted to SRT with millisecond precision,
-    * every cue start/end is snapped to the video's frame grid,
-    * verified by diffing final SRT timestamps against video duration.
+Env:
+    OPENSUBTITLESCOM_API_KEY  (required for download)
 """
 from __future__ import annotations
 
 import argparse
 import json
 import logging
+import os
 import re
 import subprocess
 import time
 from pathlib import Path
 
+import requests
+from babelfish import Language
+from subliminal import ProviderPool, scan_video
+
 logger = logging.getLogger("subtitle")
 
 MOVIES_DIR = "J:/Media-Archive/Movies"
 TV_SHOWS_DIR = "J:/Media-Archive/TV Shows"
-SUPPORTED_LANGS = ["en", "es"]
-
-ALL_PROVIDERS = [
-    "addic7ed", "gestdown", "napiprojekt", "opensubtitles",
-    "opensubtitlescom", "podnapisi", "subtis", "subtitulamos", "tvsubtitles",
-]
-
-PROBE_URLS = {
-    "opensubtitles": "https://api.opensubtitles.com",
-    "opensubtitlescom": "https://www.opensubtitles.com",
-    "subtitulamos": "https://subtitulamos.cc",
-    "podnapisi": "https://www.podnapisi.net",
-    "tvsubtitles": "https://www.tvsubtitles.net",
-    "addic7ed": "https://www.addic7ed.com",
-    "gestdown": "https://gestdown.ca",
-    "napiprojekt": "https://napiprojekt.pl",
-    "subtis": "https://subtis.org",
-}
+SUPPORTED_LANGS = {"eng", "spa"}
+API_KEY = os.environ.get("OPENSUBTITLESCOM_API_KEY", "")
+BASE_URL = "https://api.opensubtitles.com/api/v1"
 
 VIDEO_EXTS = {".mkv", ".mp4", ".avi", ".m2ts", ".webm", ".flv", ".m4v",
               ".3gp", ".mpeg", ".mpg", ".mov", ".wmv", ".qt"}
@@ -86,7 +72,8 @@ def get_video_fps(video_path: Path):
         rf = json.loads(probe.stdout).get("streams", [{}])[0].get("r_frame_rate", "0/0")
         if rf and "/" in rf:
             a, b = rf.split("/", 1)
-            return float(a) / float(b)
+            if float(b):
+                return float(a) / float(b)
     except Exception:
         pass
     return None
@@ -103,65 +90,19 @@ def get_video_duration_ms(video_path: Path):
         return None
 
 
-def parse_srt_timings(path: Path):
-    text = path.read_text(encoding="utf-8", errors="replace")
-    lines = text.splitlines()
-    out = []
-    i = 0
-    while i < len(lines):
-        while i < len(lines) and (not lines[i].strip() or lines[i].strip().isdigit()):
-            i += 1
-        if i >= len(lines):
-            break
-        m = re.match(
-            r"(\d{2}):(\d{2}):(\d{2})[,.](\d{3})\s*-->\s*(\d{2}):(\d{2}):(\d{2})[,.](\d{3})",
-            lines[i].strip())
-        if not m:
-            i += 1
-            continue
-        def ms(h, mn, s, ms_):
-            return (int(h)*3600 + int(mn)*60 + int(s))*1000 + int(ms_)
-        start = ms(*m.group(1, 2, 3, 4))
-        end = ms(*m.group(5, 6, 7, 8))
-        i += 1
-        block = []
-        while i < len(lines) and lines[i].strip() and not lines[i].strip().isdigit():
-            block.append(lines[i]); i += 1
-        out.append((start, end, "\n".join(block).strip()))
-    return out
+def fmt_ms(t):
+    hh = int(t // 3600000)
+    mm = int((t % 3600000) // 60000)
+    ss = int((t % 60000) // 1000)
+    mmm = int(round(t % 1000))
+    return f"{hh:02d}:{mm:02d}:{ss:02d},{mmm:03d}"
 
 
-def is_frame_synced(video_path, srt_path):
-    """Return (frame_synced, report). Frame-synced = every cue lands
-    exactly on a video frame boundary and no cue runs past video end."""
-    fps = get_video_fps(video_path)
-    if not fps:
-        return False, {"error": "fps_undetectable"}
-    cues = parse_srt_timings(srt_path)
-    if not cues:
-        return False, {"error": "no_cues"}
-    duration_ms = get_video_duration_ms(video_path)
-    max_ms = (duration_ms + 1000) if duration_ms else float("inf")
-
-    def ms_to_frame(ms):
-        return int(round(ms * fps / 1000.0))
-
-    off_frame = 0
-    past_end = sum(1 for _, e, _ in cues if e > max_ms)
-    for s, e, _ in cues:
-        if abs(round(s * fps / 1000) - ms_to_frame(s)) > 0 or \
-           abs(round(e * fps / 1000) - ms_to_frame(e)) > 0:
-            off_frame += 1
-    return off_frame == 0 and past_end == 0, {
-        "fps": fps, "duration_ms": duration_ms, "num_cues": len(cues),
-        "off_frame_cues": off_frame, "cues_past_video_end": past_end,
-    }
-
-
-def snap_to_frame_grid(srt_path: Path, fps):
-    """Rewrite an SRT so every cue start/end lands exactly on a frame boundary."""
-    text = srt_path.read_text(encoding="utf-8", errors="replace")
-    lines = text.splitlines()
+def snap_to_frame_grid(path: Path, fps: float):
+    """Snap every cue start/end to the video frame grid."""
+    ms_per_frame = 1000.0 / fps
+    txt = path.read_text(encoding="utf-8", errors="replace")
+    lines = txt.splitlines()
     out = []
     i = 0
     while i < len(lines):
@@ -172,43 +113,49 @@ def snap_to_frame_grid(srt_path: Path, fps):
             out.append(lines[i])
             i += 1
             continue
-        def parse_ts(ts):
-            hh, mm, ss_ms = ts.split(":")
-            ss, ms = ss_ms.split(",")
-            return int(hh)*3600000 + int(mm)*60000 + int(ss)*1000 + int(ms)
 
-        def frames_to_ms(f):
-            return f * 1000 / fps
+        def parse_ts(hh, mm, ss, ms_):
+            return int(hh)*3600000 + int(mm)*60000 + int(ss)*1000 + int(ms_)
 
-        def fmt(t):
-            hh = int(t // 3600000)
-            mm = int((t % 3600000) // 60000)
-            ss = int((t % 60000) // 1000)
-            mmm = int(round(t % 1000))
-            return f"{hh:02d}:{mm:02d}:{ss:02d},{mmm:03d}"
-
-        sn = round(parse_ts(m.group(1)) * fps / 1000.0)
-        en = round(parse_ts(m.group(5)) * fps / 1000.0)
-        out.append(f"{fmt(frames_to_ms(sn))} --> {fmt(frames_to_ms(en))}")
+        sn = round(parse_ts(*m.group(1, 2, 3, 4)) / ms_per_frame)
+        en = round(parse_ts(*m.group(5, 6, 7, 8)) / ms_per_frame)
+        out.append(f"{fmt_ms(round(sn * ms_per_frame))} --> {fmt_ms(round(en * ms_per_frame))}")
         i += 1
         block = []
         while i < len(lines) and lines[i].strip() and not lines[i].strip().isdigit():
             block.append(lines[i]); i += 1
         out.extend(block)
-    srt_path.write_text("\n".join(out) + "\n", encoding="utf-8")
+    path.write_text("\n".join(out) + "\n", encoding="utf-8")
 
 
-def probe_reachability():
-    import urllib.request
-    results = {}
-    for name, url in PROBE_URLS.items():
-        try:
-            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-            with urllib.request.urlopen(req, timeout=10) as r:
-                results[name] = r.status
-        except Exception as e:
-            results[name] = f"{type(e).__name__}: {str(e)[:50]}"
-    return results
+def verify_frame_sync(video_path: Path, srt_path: Path, fps: float):
+    """Return (frame_synced, report). Frame-synced = every cue
+    within half a frame of the grid and no cue past video end."""
+    ms_per_frame = 1000.0 / fps
+    txt = srt_path.read_text(encoding="utf-8", errors="replace")
+    cues = re.findall(
+        r"(\d+):(\d+):(\d+),(\d{3}) --> (\d+):(\d+):(\d+),(\d{3})", txt)
+    if not cues:
+        return False, {"error": "no_cues"}
+
+    def ms(hh, mm, ss, m):
+        return int(hh)*3600000 + int(mm)*60000 + int(ss)*1000 + int(m)
+
+    dur = get_video_duration_ms(video_path)
+    tol = 0.5 / ms_per_frame  # half a frame in ms-units
+    off_grid = 0
+    past_end = 0
+    for c in cues:
+        s, e = ms(*c[:4]), ms(*c[4:])
+        if abs(s / ms_per_frame - round(s / ms_per_frame)) > tol or \
+           abs(e / ms_per_frame - round(e / ms_per_frame)) > tol:
+            off_grid += 1
+        if dur is not None and e > dur:
+            past_end += 1
+    return off_grid == 0 and past_end == 0, {
+        "fps": fps, "num_cues": len(cues), "off_grid_cues": off_grid,
+        "cues_past_video_end": past_end, "video_duration_ms": dur,
+    }
 
 
 def inventory_cmd(output_path=None):
@@ -236,29 +183,62 @@ def inventory_cmd(output_path=None):
     return data
 
 
-def download_cmd(pilot=None, dry_run=False):
-    print("Provider reachability (from this host's network):")
-    reach = probe_reachability()
-    reachable = [n for n, s in reach.items() if isinstance(s, int)]
-    for name, status in reach.items():
-        marker = "OK" if isinstance(status, int) else f"FAIL ({status})"
-        print(f"  {name}: {marker}")
+def download_subtitle(subtitle, session: requests.Session):
+    """Download subtitle content via the OpenSubtitles API (apikey auth)."""
+    headers = {"Api-Key": API_KEY, "User-Agent": "subliminal/2.7.1",
+               "Content-Type": "application/json", "Accept": "*/*"}
+    body = {"file_id": subtitle.file_id, "file_name": subtitle.file_name,
+            "sub_format": "srt"}
+    r = session.post(f"{BASE_URL}/download", json=body, headers=headers,
+                     timeout=30)
+    r.raise_for_status()
+    data = r.json()
+    if "link" not in data:
+        raise RuntimeError(f"no link in response: {data}")
+    link = data["link"]
+    remaining = int(data.get("remaining", -1))
+    dl = session.get(link, timeout=60)
+    dl.raise_for_status()
+    return dl.content, remaining
 
-    if not reachable:
-        print("\nBLOCKED: no free subtitle provider responds from this network")
-        print("(checked US host IP and Argentina VPN netns — both blocked).")
-        print("No EN or ES subtitles can be downloaded yet.")
-        return {"status": "blocked", "providers": reach}
 
-    # --- full download path (only runs once a provider is reachable) ---
-    from subliminal import ProviderPool, scan_video
-    from babelfish import Language
+def download_cmd(pilot=None, all_videos=False, dry_run=False):
+    if not API_KEY:
+        print("ERROR: OPENSUBTITLESCOM_API_KEY not set")
+        return {"status": "no_api_key"}
 
-    langs = {Language("en"), Language("es")}
-    pool = ProviderPool(providers=reachable)
-    videos = [Path(pilot)] if pilot else find_videos(MOVIES_DIR)[:20]
+    print("Provider reachability (from VPN tunnel):")
+    try:
+        r = requests.get(f"{BASE_URL}/subtitles", params={"languages": "en"},
+                         headers={"Api-Key": API_KEY}, timeout=30)
+        print(f"  opensubtitles.com: HTTP {r.status_code}")
+        if r.status_code != 200:
+            return {"status": "api_error", "code": r.status_code}
+    except Exception as e:
+        print(f"  opensubtitles.com: FAIL ({e})")
+        return {"status": "unreachable", "error": str(e)}
+
+    from subliminal import cache
+    cache.region.configure("dogpile.cache.memory", replace_existing_backend=True)
+
+    pool = ProviderPool(providers=["opensubtitlescom"])
+    session = requests.Session()
+    session.headers.update({"Api-Key": API_KEY,
+                            "User-Agent": "subliminal/2.7.1"})
+
+    if pilot:
+        videos = [Path(pilot)]
+    elif all_videos:
+        videos = find_videos(MOVIES_DIR) + find_videos(TV_SHOWS_DIR)
+    else:
+        # default: first 20 that need subs
+        candidates = []
+        for v in find_videos(MOVIES_DIR) + find_videos(TV_SHOWS_DIR):
+            if not ("en" in scan_sub_dirs(v) and "es" in scan_sub_dirs(v)):
+                candidates.append(v)
+        videos = candidates[:20]
+
     results = {"downloaded": 0, "skipped": 0, "failed": 0, "items": []}
-
     for v in videos:
         print(f"\n  Video: {v.name}")
         en_need = "en" not in scan_sub_dirs(v)
@@ -274,31 +254,42 @@ def download_cmd(pilot=None, dry_run=False):
             results["failed"] += 1
             continue
         try:
-            subs = pool.list_subtitles(video, langs)
-            by_lang = {"en": [], "es": []}
-            for s in subs:
-                a2 = s.language.alpha2
-                if a2 in by_lang:
-                    by_lang[a2].append(s)
-            print(f"    found: en={len(by_lang['en'])} es={len(by_lang['es'])}")
-            if dry_run:
-                continue
-            for lang, lang_list in by_lang.items():
-                if lang_list:
-                    best = sorted(lang_list, key=lambda s: -s.score)[0]
-                    out = v.with_suffix(f".{lang}.srt")
-                    if out.exists():
-                        out.unlink()
-                    out.write_text(best.text, encoding="utf-8")
-                    snap_to_frame_grid(out, get_video_fps(v) or 23.976)
-                    synced, report = is_frame_synced(v, out)
-                    print(f"    wrote {out.name}: frame_synced={synced} cues={report.get('num_cues')}")
-                    results["downloaded"] += 1
+            subs = pool.list_subtitles(video, SUPPORTED_LANGS)
         except Exception as e:
-            print(f"    download failed: {e}")
+            print(f"    list_subtitles failed: {e}")
             results["failed"] += 1
-        results["items"].append({"path": str(v), "needs_en": en_need, "needs_es": es_need})
+            continue
+        by_lang = {}
+        for s in subs:
+            by_lang.setdefault(s.language.alpha2, []).append(s)
+        print(f"    found: en={len(by_lang.get('en', []))} es={len(by_lang.get('es', []))}")
+        if dry_run:
+            continue
 
+        fps = get_video_fps(v)
+        for lang, lst in sorted(by_lang.items()):
+            if not lst:
+                continue
+            best = lst[0]
+            try:
+                content, remaining = download_subtitle(best, session)
+            except Exception as e:
+                print(f"    download {lang} failed: {e}")
+                results["failed"] += 1
+                continue
+            out = v.with_suffix(f".{lang}.srt")
+            out.write_bytes(content)
+            if fps:
+                snap_to_frame_grid(out, fps)
+                synced, report = verify_frame_sync(v, out, fps)
+                print(f"    wrote {out.name}: {len(content)}B, cues={report['num_cues']}, "
+                      f"frame_synced={synced}, quota_left={remaining}")
+            else:
+                print(f"    wrote {out.name}: {len(content)}B (fps unknown, no snap)")
+            results["downloaded"] += 1
+
+    pool.terminate()
+    session.close()
     return results
 
 
@@ -312,6 +303,7 @@ def main():
 
     dl = sub.add_parser("download", help="Download EN+ES subtitles")
     dl.add_argument("--pilot", help="Single video path for dry-run test")
+    dl.add_argument("--all", action="store_true", help="Process all videos")
     dl.add_argument("--dry-run", action="store_true")
 
     args = p.parse_args()
@@ -320,7 +312,7 @@ def main():
         print(json.dumps(data["stats"], indent=2))
     elif args.cmd == "download":
         res = download_cmd(pilot=getattr(args, "pilot", None),
-                           dry_run=args.dry_run)
+                           all_videos=args.all, dry_run=args.dry_run)
         print(json.dumps(res, indent=2, default=str))
 
 
