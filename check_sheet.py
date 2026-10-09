@@ -3,18 +3,32 @@ import json
 import os
 import sys
 import urllib.request
+import openpyxl
 
-# Read sheet from URL
-url = "https://docs.google.com/spreadsheets/d/1UJXLIPlgflXCVEOsOAT0AJJUHNdZKC1chvtaCRCeRks/export?format=csv&gid=0"
-response = urllib.request.urlopen(url)
-csv_content = response.read().decode('utf-8')
+# Read the personal movie list — local copy of the OneDrive tracking file.
+SHEET_PATH = "C:/Users/jonat/OneDrive/Movies.xlsx"
+RPC_URL = "http://127.0.0.1:6800/jsonrpc"
+DOWNLOADS_DIR = "K:/dl"
 
 sheet_items = []
-reader = csv.DictReader(csv_content.splitlines())
-for row in reader:
-    title = row['Title'].strip()
-    year = row['Year'].strip()
-    sheet_items.append({'title': title, 'year': year})
+if os.path.exists(SHEET_PATH):
+    wb = openpyxl.load_workbook(SHEET_PATH, read_only=True)
+    ws = wb.active
+    header = [c.value for c in next(ws.iter_rows())]
+    for row in ws.iter_rows(min_row=2, values_only=True):
+        if not row or all(v is None for v in row):
+            continue
+        title = (row[0] or '').strip()
+        if not title:
+            continue
+        year = row[1] if len(row) > 1 else None
+        year = str(int(year)) if (year is not None and isinstance(year, float)) else str(year) if year is not None else ''
+        downloaded = (row[4] or '').strip().upper() if len(row) > 4 else ''
+        where = (row[3] or '').strip() if len(row) > 3 else ''
+        sheet_items.append({'title': title, 'year': year, 'where': where, 'downloaded': downloaded})
+else:
+    print(f"ERROR: {SHEET_PATH} not found", file=sys.stderr)
+    sys.exit(1)
 
 print(f"Sheet items: {len(sheet_items)}")
 
@@ -54,6 +68,7 @@ print(f"Tracker pending: {len(tracker_pending)}")
 # Check each sheet item
 on_disk = 0
 in_tracker_done = 0
+in_sheet_done = 0
 pending = 0
 pending_items = []
 
@@ -61,6 +76,11 @@ for item in sheet_items:
     title = item['title']
     year = item['year']
     
+    # Skip items already marked Downloaded=Y in the sheet itself
+    if item.get('downloaded') == 'Y':
+        in_sheet_done += 1
+        continue
+
     # Check disk - try multiple name formats
     found_on_disk = False
     for disk_item in disk_movies | disk_tv:
@@ -94,6 +114,7 @@ for item in sheet_items:
 
 print(f"\nOn disk: {on_disk}")
 print(f"In tracker done: {in_tracker_done}")
+print(f"Marked Downloaded=Y in sheet: {in_sheet_done}")
 print(f"Pending: {pending}")
 print(f"\nPending items:")
 for p in pending_items:
