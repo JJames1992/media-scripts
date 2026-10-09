@@ -41,7 +41,7 @@ if _ENV_PATH.exists():
 
 MOVIES_DIR = "J:/Media-Archive/Movies"
 TV_SHOWS_DIR = "J:/Media-Archive/TV Shows"
-SUPPORTED_LANGS = {"eng", "spa"}
+SUPPORTED_LANGS = {Language("eng"), Language("spa")}
 API_KEY = os.environ.get("OPENSUBTITLESCOM_API_KEY", "")
 BASE_URL = "https://api.opensubtitles.com/api/v1"
 
@@ -218,8 +218,12 @@ def download_cmd(pilot=None, all_videos=False, dry_run=False):
 
     print("Provider reachability (from VPN tunnel):")
     try:
-        r = requests.get(f"{BASE_URL}/subtitles", params={"languages": "en"},
-                         headers={"Api-Key": API_KEY}, timeout=30)
+        headers = {"Api-Key": API_KEY, "User-Agent": "subliminal/2.7.1",
+                   "Accept": "*/*"}
+        # the real working shape: query must be non-empty + lowercase
+        r = requests.get(f"{BASE_URL}/subtitles",
+                         params={"languages": "en", "query": "calvary 2014"},
+                         headers=headers, timeout=30)
         print(f"  opensubtitles.com: HTTP {r.status_code}")
         if r.status_code != 200:
             return {"status": "api_error", "code": r.status_code}
