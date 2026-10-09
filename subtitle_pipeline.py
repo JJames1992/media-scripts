@@ -30,6 +30,15 @@ from subliminal import ProviderPool, scan_video
 
 logger = logging.getLogger("subtitle")
 
+# load .env next to this script (gitignored)
+_ENV_PATH = Path(__file__).resolve().parent / ".env"
+if _ENV_PATH.exists():
+    for _line in _ENV_PATH.read_text().splitlines():
+        if _line.strip() and not _line.lstrip().startswith("#"):
+            if "=" in _line:
+                _k, _v = _line.split("=", 1)
+                os.environ.setdefault(_k.strip(), _v.strip())
+
 MOVIES_DIR = "J:/Media-Archive/Movies"
 TV_SHOWS_DIR = "J:/Media-Archive/TV Shows"
 SUPPORTED_LANGS = {"eng", "spa"}
