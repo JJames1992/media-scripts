@@ -234,7 +234,10 @@ def download_cmd(pilot=None, all_videos=False, dry_run=False):
     from subliminal import cache
     cache.region.configure("dogpile.cache.memory", replace_existing_backend=True)
 
-    pool = ProviderPool(providers=["opensubtitlescom"])
+    pool = ProviderPool(
+        providers=["opensubtitlescom"],
+        provider_configs={"opensubtitlescom": {"max_result_pages": 3}}
+    )
     session = requests.Session()
     session.headers.update({"Api-Key": API_KEY,
                             "User-Agent": "subliminal/2.7.1"})
