@@ -151,7 +151,7 @@ def verify_frame_sync(video_path: Path, srt_path: Path, fps: float):
         return int(hh)*3600000 + int(mm)*60000 + int(ss)*1000 + int(m)
 
     dur = get_video_duration_ms(video_path)
-    tol = 0.5 / ms_per_frame  # half a frame in ms-units
+    tol = 0.5  # half a frame in frame-number units
     off_grid = 0
     past_end = 0
     for c in cues:
@@ -295,8 +295,13 @@ def download_cmd(pilot=None, all_videos=False, dry_run=False):
             if fps:
                 snap_to_frame_grid(out, fps)
                 synced, report = verify_frame_sync(v, out, fps)
-                print(f"    wrote {out.name}: {len(content)}B, cues={report['num_cues']}, "
-                      f"frame_synced={synced}, quota_left={remaining}")
+                if "error" in report:
+                    print(f"    wrote {out.name}: {len(content)}B, cues=0 "
+                          f"(verify: {report['error']}), quota_left={remaining}")
+                else:
+                    cues = report.get("num_cues", 0)
+                    print(f"    wrote {out.name}: {len(content)}B, cues={cues}, "
+                          f"frame_synced={synced}, quota_left={remaining}")
             else:
                 print(f"    wrote {out.name}: {len(content)}B (fps unknown, no snap)")
             results["downloaded"] += 1
